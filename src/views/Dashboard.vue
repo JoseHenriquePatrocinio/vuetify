@@ -1,6 +1,11 @@
 <template>
   <div class="dashboard">
-    <h1>homepage</h1>
+    <h1 class="text-subtitle-1 grey--text">homepage</h1>
+
+    <v-container class="my-5">
+        content
+      </v-container>
+
   </div>
 </template>
 
