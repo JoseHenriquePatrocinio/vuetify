@@ -1,8 +1,19 @@
 <template>
   <div class="dashboard">
-    <h1 class="text-subtitle-1 grey--text">homepage</h1>
+    <h1 class="text-subtitle-2 grey--text pa-3">Dashboard</h1>
 
     <v-container class="my-5">
+
+      <v-layout row class="mb-3">
+        <v-btn small text color="grey" @click="sortBy('title')">
+          <v-icon left small>mdi-folder</v-icon>
+          <span class="caption text-uppercase">By project name</span>
+        </v-btn>
+        <v-btn small text color="grey" @click="sortBy('person')">
+          <v-icon left small>mdi-account</v-icon>
+          <span class="caption text-uppercase">By person</span>
+        </v-btn>
+      </v-layout>
 
       <v-card class="pa-3 mb-1" v-for="project in projects" :key="project.title">
         <v-layout row wrap :class="'pa-3 project ' + project.status">
@@ -58,6 +69,9 @@ export default {
         default:
           return "gray";
       }
+    },
+    sortBy(prop) {
+      this.projects.sort((a, b) => a[prop] < b[prop] ? -1 : 1)
     }
   }
 
