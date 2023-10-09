@@ -20,8 +20,9 @@
             <div>{{ project.due }}</div>
           </v-flex>
           <v-flex xs2 sm4 md2>
-            <div class="caption grey--text">Status</div>
-            <div>{{ project.status }}</div>
+            <div>
+              <v-chip :color="getStatusColor(project.status)" class="white--text caption my-2">{{ project.status }}</v-chip>
+            </div>
           </v-flex>
         </v-layout>
       </v-card>
@@ -43,23 +44,35 @@ export default {
           { title: 'Create a community forum', person: 'Gouken', due: '20th Oct 2018', status: 'overdue', content: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt consequuntur eos eligendi illum minima adipisci deleniti, dicta mollitia enim explicabo fugiat quidem ducimus praesentium voluptates porro molestias non sequi animi!' }
         ]
     }
+  },
+  methods: {
+    getStatusColor(status) {
+      switch (status) {
+        case "complete":
+          return "#3cd1c2";
+        case "ongoing":
+          return "#ffaa2c";
+        case "overdue":
+          return "#f83e70";
+        default:
+          return "gray";
+      }
+    }
   }
 
 }
 </script>
 
 <style>
-
-.project.complete{
+.project.complete {
   border-left: 4px solid #3cd1c2;
 }
 
-.project.ongoing{
+.project.ongoing {
   border-left: 4px solid orange;
 }
 
-.project.overdue{
+.project.overdue {
   border-left: 4px solid tomato;
 }
-
 </style>
