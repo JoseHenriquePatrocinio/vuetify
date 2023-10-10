@@ -38,6 +38,11 @@
                         Chun Li
                     </p>
                 </v-flex>
+
+                <v-flex class="mt-4 mb-3">
+                    <PopupComp />
+                </v-flex>
+
             </v-layout>
             <v-list>
                 <v-list-item v-for="link in links" :key="link.text" router :to="link.route">
@@ -56,6 +61,7 @@
 </template>
 
 <script>
+import PopupComp from "./Popup"
 export default {
     name: "NavbarComp",
     data() {
@@ -67,6 +73,7 @@ export default {
                 { icon: 'mdi-account-group', text: 'Team', route: '/team' }
             ]
         }
-    }
+    },
+    components: { PopupComp }
 }
 </script>
